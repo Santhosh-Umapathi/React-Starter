@@ -8,9 +8,11 @@ const Person = (props) =>
 
 	return (
 	<div>
-		<p className = 'Person'> I am {name}, {age} years old </p>
-			<p>{children}</p>
-			<input onChange={inputHandler} />
+		<p className='Person'> I am {name}, {age} years old </p>
+			
+		<p>{children}</p>
+			
+		<input onChange={inputHandler} />
 	</div>
 ); 
 }
