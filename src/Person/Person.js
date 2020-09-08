@@ -4,11 +4,11 @@ import './Person.css'
 const Person = (props) =>
 {
 
-	const {name, age, children, inputHandler} = props
+	const {name, age, children, inputHandler, click} = props
 
 	return (
 	<div>
-		<p className='Person'> I am {name}, {age} years old </p>
+		<p className='Person' onClick={click}> I am {name}, {age} years old </p>
 			
 		<p>{children}</p>
 			
