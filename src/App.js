@@ -3,7 +3,8 @@ import './App.css';
 import Person from './Person/Person';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
-
+import Validation from './Validation/Validation'
+import CharComp from './Validation/CharComp'
 
 
 
@@ -19,6 +20,8 @@ class App extends Component
     otherState: 'untouched',
     userName: 'Jack',
     showPersons: false,
+    inp: '',
+    chars:[]
 
 
   }
@@ -66,7 +69,31 @@ class App extends Component
     const newPersons = [...this.state.persons] // Copying array
     newPersons.splice(personIndex, 1)
     this.setState({persons: newPersons})
+  }
+
+  
+  inpHandler = event =>
+  {
+    this.setState({
+      inp: event.target.value
+    })
+
+   
+  }
+
+  deleteChar = (index) =>
+  {
+    const textArr = this.state.inp.split('')
+    textArr.splice(index, 1)
+    const newArr = textArr.join('')
+
+    this.setState({
+      inp: newArr
+    })
+    
     }
+  
+
 
   render()
   {
@@ -96,6 +123,11 @@ class App extends Component
         })
       }
 
+    const char = this.state.inp.split('').map((i, index) =>
+    {
+      return <CharComp char={i} clicked={() => this.deleteChar(index)}/>
+    })
+      console.log(char)
 
     return (
       <div className="App">
@@ -108,11 +140,16 @@ class App extends Component
 
         {persons}
 
-        <UserInput change={this.userNameHandler} value={this.state.userName}/>
+        {char}
+
+        {/* <UserInput change={this.userNameHandler} value={this.state.userName}/>
 
         <UserOutput name={this.state.userName}/>
-        <UserOutput />
+        <UserOutput /> */}
 
+        <input onChange={(event) => this.inpHandler(event)}/>
+        <p>{this.state.inp.length}</p>
+        <Validation length={this.state.inp.length} />
 
       </div>
     );
