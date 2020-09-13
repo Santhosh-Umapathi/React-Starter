@@ -34,3 +34,44 @@
 .bold{
   font-weight: bold;
 }
+
+.Button
+{
+  background-color: green;
+  color:white
+}
+
+.Button:hover{
+  background-color: lightgreen;
+}
+
+.Button.Red{
+  background-color: red;
+  color:white
+}
+
+.Button.Red:hover{
+  background-color: yellow;
+  color:black
+}
+
+/* Adding all styles for button in app
+.App button
+{
+  background-color: green;
+  color:white
+}
+
+.App button:hover{
+  background-color: lightgreen;
+}
+
+.App utton.Red{
+  background-color: red;
+  color:white
+}
+
+.App button.Red:hover{
+  background-color: yellow;
+  color:black
+} */

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import Person from './Person/Person';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
 // import Validation from './Validation/Validation'
 // import CharComp from './Validation/CharComp'
+
+import classes from './App.css';
+
 
 
 
@@ -100,25 +103,39 @@ class App extends Component
   render()
   {
     // Inline Style
-    const style = {
-      backgroundColor: 'green',
-      color:'white',
-      border: '1px solid blue',
-      cursor: 'pointer',
-      padding: '8px',
-    }
+    // const style = {
+    //   backgroundColor: 'green',
+    //   color:'white',
+    //   border: '1px solid blue',
+    //   cursor: 'pointer',
+    //   padding: '8px',
+    // }
 
     // let classes = ["red" ,"bold"].join(" ") // Gives "red bold", 2 css classes combined
 
     // Alternative dynamic styling
-    let classes = []
+    // let classes = []
+    // if (this.state.persons.length <= 2)
+    // {
+    //   classes.push('red') // ['red]
+    // }
+    // if (this.state.persons.length <= 1)
+    // {
+    //   classes.push('bold') // ['red, 'bold']
+    // }
+
+    let buttonClass = [classes.Button]
+    // let buttonClass = ''
+
+
+    let classesArray = []
     if (this.state.persons.length <= 2)
     {
-      classes.push('red') // ['red]
+      classesArray.push(classes.red) // ['red]
     }
     if (this.state.persons.length <= 1)
     {
-      classes.push('bold') // ['red, 'bold']
+      classesArray.push(classes.bold) // ['red, 'bold']
     }
 
     let persons = null;
@@ -137,8 +154,10 @@ class App extends Component
           />
         </div> 
       })
-      style.backgroundColor = 'red'
-      
+      // style.backgroundColor = 'red'
+      buttonClass.push(classes.Red)
+      // buttonClass = classes.Red
+
 
       }
 
@@ -148,11 +167,11 @@ class App extends Component
     // })
 
     return (
-      <div className="App">
+      <div className={classes.App}>
 
-        <p className={classes.join(" ")}> React Starter</p>
+        <p className={classesArray.join(" ")}> React Starter</p>
 
-        <button onClick = {this.togglePersons} style={style}>
+        <button onClick = {this.togglePersons} className = {buttonClass.join(" ")}> {/*style={style}*/ }{/* className = {buttonClass}*/}
           Toggle Persons
         </button>
 
