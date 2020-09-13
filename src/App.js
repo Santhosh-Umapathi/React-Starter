@@ -9,6 +9,8 @@ import Person from './Person/Person';
 
 
 
+
+
 class App extends Component
 {
   state = {
@@ -103,7 +105,7 @@ class App extends Component
       color:'white',
       border: '1px solid blue',
       cursor: 'pointer',
-      padding:'8px'
+      padding: '8px',
     }
 
     // let classes = ["red" ,"bold"].join(" ") // Gives "red bold", 2 css classes combined
@@ -130,11 +132,13 @@ class App extends Component
             age={item.age}
             inputHandler={this.nameChangeHandler}
             click={() => this.deletePersonHandler(index)}
-            inputHandler = {event => this.nameChangeHandler(event, item.id)}
+            inputHandler={event => this.nameChangeHandler(event, item.id)}
+            state = {this.state.showPersons}
           />
         </div> 
       })
       style.backgroundColor = 'red'
+      
 
       }
 
@@ -148,7 +152,7 @@ class App extends Component
 
         <p className={classes.join(" ")}> React Starter</p>
 
-        <button onClick = {this.togglePersons} style={style}> 
+        <button onClick = {this.togglePersons} style={style}>
           Toggle Persons
         </button>
 

@@ -15,10 +15,21 @@ const StyledDiv = styled.div` // CSS without class names
 	}
 `
 
+const StyledButton = styled.button`
+background-color: ${props => props.alt ? 'red': "green"};
+color:white;
+&:hover
+{
+	background-color:${props => props.alt ? 'orange': "blue"}; 
+	color:white;
+}
+`
+
+
 const Person = (props) =>
 {
 
-	const {name, age, children, inputHandler, click} = props
+	const {name, age, children, inputHandler, click, state} = props
 
 	return (
 	<StyledDiv>
@@ -26,7 +37,11 @@ const Person = (props) =>
 			
 		<p>{children}</p>
 			
-		<input onChange={inputHandler} />
+			<input onChange={inputHandler} />
+			
+			<StyledButton alt= {state}>
+				Styled Button
+			</StyledButton>
 	</StyledDiv>
 ); 
 }
