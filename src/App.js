@@ -8,7 +8,7 @@ import Person from './Person/Person';
 
 import classes from './App.css';
 
-
+import ErrorBoundary from './Error Boundary/ErrorBoundary'
 
 
 
@@ -142,9 +142,8 @@ class App extends Component
     if (this.state.showPersons)
     {
       persons = this.state.persons.map((item, index) => {
-        return <div>
+        return <ErrorBoundary key = {item.id}>
           <Person
-            key = {item.id}
             name={item.name}
             age={item.age}
             inputHandler={this.nameChangeHandler}
@@ -152,7 +151,7 @@ class App extends Component
             inputHandler={event => this.nameChangeHandler(event, item.id)}
             state = {this.state.showPersons}
           />
-        </div> 
+        </ErrorBoundary> 
       })
       // style.backgroundColor = 'red'
       buttonClass.push(classes.Red)

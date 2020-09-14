@@ -29,21 +29,32 @@ color:white;
 const Person = (props) =>
 {
 
-	const {name, age, children, inputHandler, click, state} = props
+	const { name, age, children, inputHandler, click, state } = props
+	
+	const randNum = Math.random()
 
-	return (
-	<StyledDiv>
-		<p className='Person' onClick={click}> I am {name}, {age} years old </p>
-			
-		<p>{children}</p>
-			
-			<input onChange={inputHandler} />
-			
-			<StyledButton alt= {state}>
-				Styled Button
-			</StyledButton>
-	</StyledDiv>
-); 
+	if (randNum > 0.7)
+	{
+		throw new Error("Something went wrong")
+	}
+	else
+	{
+		return (
+			<StyledDiv>
+				<p className='Person' onClick={click}> I am {name}, {age} years old </p>
+					
+				<p>{children}</p>
+					
+					<input onChange={inputHandler} />
+					
+					<StyledButton alt= {state}>
+						Styled Button
+					</StyledButton>
+			</StyledDiv>
+		); 
+		}
+
+	
 }
 
 export default Person;
