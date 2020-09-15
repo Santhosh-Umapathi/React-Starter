@@ -33,12 +33,12 @@ const Person = (props) =>
 	
 	const randNum = Math.random()
 
-	if (randNum > 0.7)
+	/*if (randNum > 0.7)
 	{
 		throw new Error("Something went wrong")
 	}
 	else
-	{
+	{*/
 		return (
 			<StyledDiv>
 				<p className='Person' onClick={click}> I am {name}, {age} years old </p>
@@ -52,7 +52,7 @@ const Person = (props) =>
 					</StyledButton>
 			</StyledDiv>
 		); 
-		}
+		//}
 
 	
 }

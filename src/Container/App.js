@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 // import './App.css';
-import Person from './Person/Person';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
 // import Validation from './Validation/Validation'
 // import CharComp from './Validation/CharComp'
 
 import classes from './App.css';
-
-import ErrorBoundary from './Error Boundary/ErrorBoundary'
+import Persons from '../Components/Persons/Persons'
+import Cockpit from '../Components/Cockpit/Cockpit';
 
 
 
@@ -102,59 +101,20 @@ class App extends Component
 
   render()
   {
-    // Inline Style
-    // const style = {
-    //   backgroundColor: 'green',
-    //   color:'white',
-    //   border: '1px solid blue',
-    //   cursor: 'pointer',
-    //   padding: '8px',
-    // }
+    
 
-    // let classes = ["red" ,"bold"].join(" ") // Gives "red bold", 2 css classes combined
-
-    // Alternative dynamic styling
-    // let classes = []
-    // if (this.state.persons.length <= 2)
-    // {
-    //   classes.push('red') // ['red]
-    // }
-    // if (this.state.persons.length <= 1)
-    // {
-    //   classes.push('bold') // ['red, 'bold']
-    // }
-
-    let buttonClass = [classes.Button]
-    // let buttonClass = ''
-
-
-    let classesArray = []
-    if (this.state.persons.length <= 2)
-    {
-      classesArray.push(classes.red) // ['red]
-    }
-    if (this.state.persons.length <= 1)
-    {
-      classesArray.push(classes.bold) // ['red, 'bold']
-    }
+    
 
     let persons = null;
     if (this.state.showPersons)
     {
-      persons = this.state.persons.map((item, index) => {
-        return <ErrorBoundary key = {item.id}>
-          <Person
-            name={item.name}
-            age={item.age}
-            inputHandler={this.nameChangeHandler}
-            click={() => this.deletePersonHandler(index)}
-            inputHandler={event => this.nameChangeHandler(event, item.id)}
-            state = {this.state.showPersons}
-          />
-        </ErrorBoundary> 
-      })
+      persons = <Persons
+      nameChangeHandler={this.nameChangeHandler}
+        persons = {this.state.persons}
+        deletePersonHandler={this.deletePersonHandler}
+        showPersons = {this.state.showPersons}
+      />
       // style.backgroundColor = 'red'
-      buttonClass.push(classes.Red)
       // buttonClass = classes.Red
 
 
@@ -168,11 +128,11 @@ class App extends Component
     return (
       <div className={classes.App}>
 
-        <p className={classesArray.join(" ")}> React Starter</p>
-
-        <button onClick = {this.togglePersons} className = {buttonClass.join(" ")}> {/*style={style}*/ }{/* className = {buttonClass}*/}
-          Toggle Persons
-        </button>
+        <Cockpit
+          togglePersons={this.togglePersons}
+          persons={this.state.persons}
+          showPersons = {this.state.showPersons}
+        />
 
         {persons}
 
