@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 // import './Person.css'
 import styled from 'styled-components'
 
@@ -26,10 +26,15 @@ color:white;
 `
 
 
-const Person = (props) =>
+class Person extends Component
 {
 
-	const { name, age, children, inputHandler, click, state } = props
+	render()
+	{
+		console.log("Person JS => Render")
+
+
+	const { name, age, children, inputHandler, click, state } = this.props
 	
 	const randNum = Math.random()
 
@@ -53,7 +58,7 @@ const Person = (props) =>
 			</StyledDiv>
 		); 
 		//}
-
+}
 	
 }
 

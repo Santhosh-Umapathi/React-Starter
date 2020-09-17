@@ -15,6 +15,13 @@ import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component
 {
+  constructor(props) {
+    console.log("APP JS => Constructor")
+    super(props);
+
+
+  }
+
   state = {
     persons: [
       { id: 'sda',name: 'Max', age: 25 },
@@ -28,6 +35,35 @@ class App extends Component
     chars:[]
 
 
+  }
+
+  static getDerivedStateFromProps(props, state)
+  {
+    console.log("APP JS => getDerivedStateFromProps,", props)
+    return state
+  }
+
+  shouldComponentUpdate(nextProps, nextState)
+  {
+    console.log("APP => shouldComponentUpdate" )
+
+    // this.props === nextProps // Real way 
+    return true; // Example
+  }
+
+  //componentWillMount()
+  //{
+    //console.log("APP JS => Component will mount")
+  //}
+
+  componentDidMount()
+  {
+    console.log("APP JS => Component did mount")
+  }
+
+  componentDidUpdate()
+  {
+    console.log("App => componentDidUpdate")
   }
 
   // switchNamesHandler = () =>
@@ -102,7 +138,7 @@ class App extends Component
   render()
   {
     
-
+    console.log("APP JS => Render")
     
 
     let persons = null;
@@ -129,6 +165,7 @@ class App extends Component
       <div className={classes.App}>
 
         <Cockpit
+          title = {this.props.appTitle}
           togglePersons={this.togglePersons}
           persons={this.state.persons}
           showPersons = {this.state.showPersons}

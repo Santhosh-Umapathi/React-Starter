@@ -47,7 +47,7 @@ export default function Cockpit(props) {
 
 	return (
 		<div>
-			<p className={classesArray.join(" ")}> React Starter</p>
+      <p className={classesArray.join(" ")}> {props.title} </p>
 
 			<button onClick={props.togglePersons} className={buttonClass.join(" ")}>
 				{/*style={style}*/}{/* className = {buttonClass}*/}
