@@ -31,6 +31,7 @@ class App extends Component
     otherState: 'untouched',
     userName: 'Jack',
     showPersons: false,
+    showCockpit: true,
     inp: '',
     chars:[]
 
@@ -164,12 +165,17 @@ class App extends Component
     return (
       <div className={classes.App}>
 
-        <Cockpit
+        <button onClick = {() => this.setState({showCockpit: !this.state.showCockpit})}>Remove cockpit</button>
+        
+        { this.state.showCockpit ? 
+          <Cockpit
           title = {this.props.appTitle}
           togglePersons={this.togglePersons}
-          persons={this.state.persons}
+          personsLength={this.state.persons.l}
           showPersons = {this.state.showPersons}
-        />
+          />
+          : null
+        }
 
         {persons}
 

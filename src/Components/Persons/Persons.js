@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import Person from './Person/Person'
 //import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary'
 
-class Persons extends Component
+class Persons extends PureComponent//Component
 {
 
   static getDerivedStateFromProps(props, state) 
@@ -11,13 +11,25 @@ class Persons extends Component
       return state;
   }
 
-  shouldComponentUpdate(nextProps, nextState)
+  /*shouldComponentUpdate(nextProps, nextState) // Included in pure component to check all props
   {
-    console.log("Persons => shouldComponentUpdate" )
-
-    // this.props === nextProps // Real way 
-    return true; // Example
-  }
+    console.log("Persons => shouldComponentUpdate")
+    
+    if (
+      nextProps.persons !== this.props.persons ||
+      nextProps.click !== this.props.click ||
+      nextProps.inputHandler !== this.props.inputHandler
+    )
+    {
+      return true
+    }
+    else
+    {
+      return false
+    }
+    
+    //return true; // Example
+  }*/
 
   getSnapshotBeforeUpdate(prevProps, prevState) 
   {

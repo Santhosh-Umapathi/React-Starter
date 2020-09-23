@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import Aux from '../Aux/Aux'
+import Persons from '../Persons/Persons'
 import classes from './Cockpit.css'
 
-export default function Cockpit(props) {
+
+
+const Cockpit = (props) =>
+{
+
+  
+
+
+  useEffect(() => {
+    console.log("Cockpit: UE 2")
+    return () => {
+      console.log("Cockpit: UE 2 Clean") // runs before
+    }
+  })
 
 
 	// Inline Style
@@ -30,12 +45,12 @@ export default function Cockpit(props) {
 
 
     let classesArray = []
-    if (props.persons.length <= 2)
+    if (props.personsLength <= 2)
     {
       classesArray.push(classes.red) // ['red]
     }
-    if (props.persons.length <= 1)
-    {
+    if (props.personsLength <= 1)
+    {  
       classesArray.push(classes.bold) // ['red, 'bold']
 	}
 	
@@ -44,15 +59,19 @@ export default function Cockpit(props) {
 		buttonClass.push(classes.Red)
 
 	}
+  
+
 
 	return (
-		<div>
+		<Aux>
       <p className={classesArray.join(" ")}> {props.title} </p>
 
 			<button onClick={props.togglePersons} className={buttonClass.join(" ")}>
 				{/*style={style}*/}{/* className = {buttonClass}*/}
 				Toggle Persons
 			</button>
-		</div>
+		</Aux>
 	)
 }
+
+export default React.memo(Cockpit);
