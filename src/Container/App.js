@@ -9,7 +9,7 @@ import classes from './App.css';
 import Persons from '../Components/Persons/Persons'
 import Cockpit from '../Components/Cockpit/Cockpit';
 
-
+import WithClass  from  '../Components/Aux/WithClass'
 
 
 
@@ -33,7 +33,8 @@ class App extends Component
     showPersons: false,
     showCockpit: true,
     inp: '',
-    chars:[]
+    chars: [],
+    changeCounter: 0
 
 
   }
@@ -94,7 +95,12 @@ class App extends Component
 
       persons[personIndex] = person
 
-      this.setState({persons: persons})
+      // Best way to depend on prev state to update values
+      this.setState((prevState, props) =>
+      {
+        return { persons: persons, changeCounter: prevState.changeCounter + 1 }
+      }
+      )
     }
   
   userNameHandler = (event) =>
@@ -163,7 +169,8 @@ class App extends Component
     // })
 
     return (
-      <div className={classes.App}>
+      // <WithClass className={classes.App}>
+        <Aux>
 
         <button onClick = {() => this.setState({showCockpit: !this.state.showCockpit})}>Remove cockpit</button>
         
@@ -189,10 +196,12 @@ class App extends Component
         {/* <input onChange={(event) => this.inpHandler(event)} value={this.state.inp}/> */}
         {/* <p>{this.state.inp.length}</p> */}
         {/* <Validation length={this.state.inp.length} /> */}
-
-      </div>
+        </Aux>
+      {/* </WithClass> */}
     );
   }
 }
 
-export default App;
+// export default App;
+export default WithClass(App, classes.App); // Alternative   wrapper
+
