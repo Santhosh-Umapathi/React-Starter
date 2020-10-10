@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import Aux from '../Aux/Aux'
 import Persons from '../Persons/Persons'
 import classes from './Cockpit.css'
@@ -8,11 +8,14 @@ import classes from './Cockpit.css'
 const Cockpit = (props) =>
 {
 
+  const buttonRef = useRef(null)
   
 
 
   useEffect(() => {
     console.log("Cockpit: UE 2")
+
+    buttonRef.current.click()
     return () => {
       console.log("Cockpit: UE 2 Clean") // runs before
     }
@@ -66,7 +69,12 @@ const Cockpit = (props) =>
 		<Aux>
       <p className={classesArray.join(" ")}> {props.title} </p>
 
-			<button onClick={props.togglePersons} className={buttonClass.join(" ")}>
+      <button
+        onClick={props.togglePersons}
+        className={buttonClass.join(" ")}
+        ref = {buttonRef}
+      
+      >
 				{/*style={style}*/}{/* className = {buttonClass}*/}
 				Toggle Persons
 			</button>

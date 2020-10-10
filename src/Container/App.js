@@ -169,9 +169,9 @@ class App extends Component
     // })
 
     return (
-      // <WithClass className={classes.App}>
-        <Aux>
-
+      /* <WithClass className={classes.App}>
+          <Aux>  */
+     <div>
         <button onClick = {() => this.setState({showCockpit: !this.state.showCockpit})}>Remove cockpit</button>
         
         { this.state.showCockpit ? 
@@ -183,25 +183,27 @@ class App extends Component
           />
           : null
         }
-
         {persons}
 
-        {/* {char} */}
-
-        {/* <UserInput change={this.userNameHandler} value={this.state.userName}/>
+        {/* {char} 
+         <UserInput change={this.userNameHandler} value={this.state.userName}/>
 
         <UserOutput name={this.state.userName}/>
-        <UserOutput /> */}
+        <UserOutput /> 
 
-        {/* <input onChange={(event) => this.inpHandler(event)} value={this.state.inp}/> */}
-        {/* <p>{this.state.inp.length}</p> */}
-        {/* <Validation length={this.state.inp.length} /> */}
-        </Aux>
-      {/* </WithClass> */}
-    );
+        <input onChange={(event) => this.inpHandler(event)} value={this.state.inp}/> 
+        <p>{this.state.inp.length}</p> 
+        <Validation length={this.state.inp.length} /> 
+        </Aux> 
+        </WithClass> */ }
+
+        </div>
+    )
   }
 }
 
 // export default App;
 export default WithClass(App, classes.App); // Alternative   wrapper
+
+ 
 

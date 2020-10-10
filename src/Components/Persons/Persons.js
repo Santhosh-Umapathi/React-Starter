@@ -1,5 +1,6 @@
 import React, {Component, PureComponent} from 'react'
 import Person from './Person/Person'
+import PropTypes from 'prop-types'
 //import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary'
 
 class Persons extends PureComponent//Component
@@ -63,6 +64,14 @@ class Persons extends PureComponent//Component
         //</ErrorBoundary> 
       })
 	)}
+}
+
+Persons.propTypes = {
+  click: PropTypes.func,
+  inputHandler:PropTypes.func,
+  state: PropTypes.bool,
+  age: PropTypes.number,
+  name: PropTypes.string
 }
 
 export default Persons

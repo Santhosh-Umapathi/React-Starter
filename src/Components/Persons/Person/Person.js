@@ -29,6 +29,18 @@ color:white;
 class Person extends Component
 {
 
+	constructor(props) {
+		super(props)
+		this.inputReference = React.createRef() // initial ref object created
+	}
+
+	componentDidMount()
+	{
+		// this.inputEl.focus() // 1st way
+		this.inputReference.current.focus()
+	}
+
+
 	render()
 	{
 		console.log("Person JS => Render")
@@ -50,14 +62,18 @@ class Person extends Component
 					
 				<p>{children}</p>
 					
-					<input onChange={inputHandler} />
+				<input
+					onChange={inputHandler}
+					// ref={(inputElement) => { this.inputEl = inputElement }} //1st way
+					ref = {this.inputReference}// second way
+				/>
 					
 					<StyledButton alt= {state}>
 						Styled Button
 					</StyledButton>
 			</StyledDiv>
 		); 
-		//}
+		
 }
 	
 }
